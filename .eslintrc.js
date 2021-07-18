@@ -34,5 +34,6 @@ module.exports = {
     'react-native/no-inline-styles': 'warn',
     'react-native/no-color-literals': 'error',
     '@typescript-eslint/no-empty-function': 'off',
+    'no-shadow': 'off',
   },
 };
