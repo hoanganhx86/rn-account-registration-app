@@ -44,8 +44,8 @@ describe('Registration screen', () => {
     const nameInput = getByTestId('nameInput');
     expect(nameInput).toBeTruthy();
 
-    const requiredErrors = await findAllByText(/register/i);
-    expect(requiredErrors).toHaveLength(2);
+    const registerTexts = await findAllByText(/register/i);
+    expect(registerTexts).toHaveLength(2);
   });
 
   test('Username input works properly', async () => {
