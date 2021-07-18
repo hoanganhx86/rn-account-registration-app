@@ -7,7 +7,7 @@
 
 - Register user account
 - Use SendGrid to send email with confirmation code to the user
-- Implement unit and integration tests at **src/**tests\*\*\*\*
+- Implement unit and integration tests at [here](src/__tests__)
 
 ## Backend
 
@@ -47,6 +47,8 @@ First need to start an emulator
 To run all the tests
 
     yarn test
+
+![Test results](test-results.png)
 
 ## Github workflow
 
