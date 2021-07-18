@@ -6,8 +6,14 @@
 ## Functions
 
 - Register user account
-- Send email with confirmation code
-- Implement unit and integration tests
+- Use SendGrid to send email with confirmation code to the user
+- Implement unit and integration tests at **src/**tests\*\*\*\*
+
+## Backend
+
+- Repo: https://github.com/hoanganhx86/nodejs-jwt-authentication-sample
+
+- Deployed to heroku at: https://nodejs-auth1.herokuapp.com/
 
 ## Demo
 
@@ -19,10 +25,8 @@
 
 Run those commands to install all the dependencies needed
 
-```sh
-  yarn install
-  yarn pod:install
-```
+    yarn install
+    yarn pod:install
 
 ## Ready for development
 
@@ -30,29 +34,20 @@ At the root folder of project
 
 ### Run iOS app
 
-- Debug mode
-
-```sh
-  yarn ios
-```
-
-- Release mode
-
-```sh
-  yarn ios:release
-```
+    yarn ios
 
 ### Run Android app
 
-- First need to start an emulator
-- Debug mode
+First need to start an emulator
 
-```sh
-  yarn android
-```
+    yarn android
 
-- Release mode
+## Testing
 
-```sh
-  yarn android:release
-```
+To run all the tests
+
+    yarn test
+
+## Github workflow
+
+Will run linting check code quality and run all the tests automatically

@@ -16,7 +16,8 @@
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watchAll",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --quiet --fix"
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --quiet --fix",
+    "quality:check": "yarn lint . && yarn test"
   },
   "dependencies": {
     "@callstack/react-theme-provider": "^3.0.6",

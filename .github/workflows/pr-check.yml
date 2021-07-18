@@ -1,0 +1,31 @@
+name: pull-request-check
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  lint-and-test:
+    name: linting & test on a pull request
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        env:
+          cache-name: main-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}--node--${{ env.cache-name }}--${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}--node--${{ env.cache-name }}--
+            ${{ runner.OS }}--node--
+            ${{ runner.OS }}--
+      - name: Install packages
+        run: yarn --frozen-lockfile
+      - name: Linting & tests
+        run: yarn quality:check

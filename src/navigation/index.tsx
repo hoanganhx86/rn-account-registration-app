@@ -10,7 +10,7 @@ export default function MainNavigation() {
     <Stack.Navigator>
       <Stack.Screen
         name="Registration"
-        options={{title: 'Register'}}
+        options={{title: 'Register account'}}
         component={Registration}
       />
       <Stack.Screen
