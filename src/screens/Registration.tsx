@@ -11,9 +11,11 @@ import {FormInput, FormInputType} from '../components/input/FormInput';
 import {Text} from '../components/typography/Text';
 import {register} from '../services/main';
 import {colors} from '../styles';
+import {useTheme} from '../styles/theming';
 
 const Registration = () => {
   const navigation = useNavigation();
+  const theme = useTheme();
   const [isRequesting, setIsRequesting] = useState(false);
   const usernameInputRef = useRef<TextInput>(null);
   const passwordInputRef = useRef<TextInput>(null);
@@ -140,7 +142,11 @@ const Registration = () => {
                 returnKeyType="done"
                 errorMessage={errors.name as string}
               />
-              {error && <Text style={styles.error}>{error}</Text>}
+              {error && (
+                <Text style={[styles.error, {color: theme.colors.error}]}>
+                  {error}
+                </Text>
+              )}
               <Button
                 testID={'registerBtn'}
                 type={ButtonType.Primary}
@@ -176,7 +182,6 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   error: {
-    color: colors.danger,
     marginVertical: 8,
   },
 });

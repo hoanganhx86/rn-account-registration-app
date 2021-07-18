@@ -27,12 +27,16 @@ describe('Registration screen', () => {
     mock.restore();
   });
 
-  test('Register form should render correctly', async () => {
-    const {getByTestId, findAllByText} = render(
+  const setup = () => {
+    return render(
       <NavigationContainer>
         <MainNavigation />
       </NavigationContainer>,
     );
+  };
+
+  test('Register form should render correctly', async () => {
+    const {getByTestId, findAllByText} = setup();
     const usernameInput = getByTestId('usernameInput');
     expect(usernameInput).toBeTruthy();
     const passwordInput = getByTestId('passwordInput');
@@ -45,11 +49,7 @@ describe('Registration screen', () => {
   });
 
   test('Username input works properly', async () => {
-    const {findByText, getByTestId} = render(
-      <NavigationContainer>
-        <MainNavigation />
-      </NavigationContainer>,
-    );
+    const {findByText, getByTestId} = setup();
 
     act(() => {
       const usernameInput = getByTestId('usernameInput');
@@ -66,11 +66,7 @@ describe('Registration screen', () => {
   });
 
   test('Password input works properly', async () => {
-    const {findByText, getByTestId} = render(
-      <NavigationContainer>
-        <MainNavigation />
-      </NavigationContainer>,
-    );
+    const {findByText, getByTestId} = setup();
 
     act(() => {
       const passwordInput = getByTestId('passwordInput');
@@ -89,11 +85,7 @@ describe('Registration screen', () => {
   });
 
   test('All inputs must be filled', async () => {
-    const {findAllByText, getByTestId} = render(
-      <NavigationContainer>
-        <MainNavigation />
-      </NavigationContainer>,
-    );
+    const {findAllByText, getByTestId} = setup();
 
     act(() => {
       const registerButton = getByTestId('registerBtn');
@@ -104,12 +96,8 @@ describe('Registration screen', () => {
     expect(requiredErrors).toHaveLength(3);
   });
 
-  test('Register successfully', async () => {
-    const {getByTestId, findByText} = render(
-      <NavigationContainer>
-        <MainNavigation />
-      </NavigationContainer>,
-    );
+  test('Register success', async () => {
+    const {getByTestId, findByText} = setup();
     mock.onPost('/users/').reply(201, registerSuccessResponse);
 
     fireEvent.changeText(getByTestId('usernameInput'), 'andy@mail.com');
@@ -128,11 +116,7 @@ describe('Registration screen', () => {
   });
 
   test('Register fail', async () => {
-    const {getByTestId, findByText} = render(
-      <NavigationContainer>
-        <MainNavigation />
-      </NavigationContainer>,
-    );
+    const {getByTestId, findByText} = setup();
     mock.onPost('/users/').reply(400, registerFailResponse);
 
     fireEvent.changeText(getByTestId('usernameInput'), 'andy@mail.com');
