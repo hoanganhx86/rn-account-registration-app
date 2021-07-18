@@ -10,7 +10,6 @@ import {Spacer} from '../components/common/Spacer';
 import {FormInput, FormInputType} from '../components/input/FormInput';
 import {Text} from '../components/typography/Text';
 import {register} from '../services/main';
-import {colors} from '../styles';
 import {useTheme} from '../styles/theming';
 
 const Registration = () => {
