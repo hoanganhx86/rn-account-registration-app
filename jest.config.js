@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  testEnvironment: 'jsdom',
   preset: 'react-native',
   verbose: true,
   setupFilesAfterEnv: [

@@ -13,6 +13,7 @@ const registerSuccessResponse = {
   access_token:
     'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2dvbnRvLmNvbSIsImF1ZCI6Im5vZGVqcy1qd3QtYXV0aCIsImV4cCI6MTYyNjUwODg5OCwic2NvcGUiOiJmdWxsX2FjY2VzcyIsInN1YiI6ImxhbGFsYW5kfGdvbnRvIiwianRpIjoiczdJMXpMVXJER0l5THlaRSIsImFsZyI6IkhTMjU2IiwiaWF0IjoxNjI2NTA1Mjk4fQ.66GBzbAxGg0oy5qER3zMPRiFDcpLx9h2P66NGS199l8',
 };
+const registerFailResponse = 'User already exist';
 
 let mock: MockAdapter;
 
@@ -115,14 +116,34 @@ describe('Registration screen', () => {
     fireEvent.changeText(getByTestId('passwordInput'), '12345xyz');
     fireEvent.changeText(getByTestId('nameInput'), 'Andy Nguyen');
 
-    act(async () => {
+    act(() => {
       const registerButton = getByTestId('registerBtn');
-      await fireEvent.press(registerButton);
+      fireEvent.press(registerButton);
     });
 
     const successRegister = await findByText(
       /^Please check your email inbox for verification email\./i,
     );
     expect(successRegister).toBeTruthy();
+  });
+
+  test('Register fail', async () => {
+    const {getByTestId, findByText} = render(
+      <NavigationContainer>
+        <MainNavigation />
+      </NavigationContainer>,
+    );
+    mock.onPost('/users/').reply(400, registerFailResponse);
+
+    fireEvent.changeText(getByTestId('usernameInput'), 'andy@mail.com');
+    fireEvent.changeText(getByTestId('passwordInput'), '12345xyz');
+    fireEvent.changeText(getByTestId('nameInput'), 'Andy Nguyen');
+    const registerButton = getByTestId('registerBtn');
+
+    act(() => {
+      fireEvent.press(registerButton);
+    });
+    const serverErrorMessage = await findByText(registerFailResponse);
+    expect(serverErrorMessage).toBeTruthy();
   });
 });
