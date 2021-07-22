@@ -1,4 +1,4 @@
-# Nodejs Authentication demo
+# React native and nodejs authentication demo
 
 [![react-native version](https://img.shields.io/badge/react--native-0.64.1-green.svg?style=flat-square)](https://github.com/facebook/react-native/releases)
 [![Typescript version](https://img.shields.io/badge/typesctipt-3.8.3-green.svg?style=flat-square)](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html)
