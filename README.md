@@ -12,7 +12,7 @@
 
 ## Backend
 
-- Repo: https://github.com/hoanganhx86/nodejs-jwt-authentication-sample
+- Repo: https://github.com/hoanganhx86/nodejs-jwt-authentication-demo
 
 - Deployed to heroku at: https://nodejs-auth1.herokuapp.com/
 
