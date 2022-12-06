@@ -27,7 +27,7 @@
     "apisauce": "^2.1.1",
     "color": "^4.0.0",
     "formik": "^2.2.9",
-    "qs": "^6.10.1",
+    "qs": "^6.10.3",
     "react": "17.0.1",
     "react-native": "0.64.1",
     "react-native-device-info": "^8.1.3",
